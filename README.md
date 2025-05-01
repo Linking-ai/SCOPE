@@ -43,16 +43,22 @@
 which requires specific full context, impairs the
 comprehension of the reasoning task.
 
-<div style="text-align: center;">
-    <img src="assets/figure2a.png" width="300px">
-</div>
-
 - **Deviation of heavy hitters** occurs in the reasoning
 tasks with long outputs.
 
-<div style="text-align: center;">
-    <img src="assets/figure2b.png" width="300px">
-</div>
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/figure2a.png" width="350px"/><br/>
+      <b>Excessive compression</b>
+    </td>
+    <td align="center">
+      <img src="assets/figure2b.png" width="350px"/><br/>
+      <b>Deviation of heavy hitters</b>
+    </td>
+  </tr>
+</table>
 
 
 ## Visualization

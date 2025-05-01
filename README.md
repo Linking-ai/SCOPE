@@ -1,11 +1,82 @@
-# SCOPE
-SCOPE: Optimizing KV Cache Compression in Long-context Generation
+<div align="center">
+<img src="assets/logo.png" width="180px"> <br>
+</div>
 
-> **Note:** This repo demonstrates the core principles of the SCOPE method and we will make all the code publicly available upon the acceptance of the paper.
->
-> **Three decoding strategies:** Slide, Adaptive, Discontinuous
->
-> **Setting:** Slide(decoding_metric="fixed"), Adaptive(decoding_metric="linear"), Discontinuous(decoding_metric="jump")
+<h2 align="center"><a href="https://arxiv.org/pdf/2412.13649">SCOPE: Optimizing Key-Value Cache Compression in Long-context Generation</a></h2>
+
+> *<sup>1</sup>Southeast University, <sup>2</sup>King’s College London, <sup>3</sup>The Alan Turing Institute*
+
+<h5 align="center"> If you find our project helpful, please give us a star ⭐ on GitHub to stay updated.</h5>
+
+
+<h5 align=center>
+
+[![Transformers](https://img.shields.io/badge/%F0%9F%A4%97Transformers-v4.44.2-brightgreen)](https://github.com/huggingface/transformers)
+[![arXiv](https://img.shields.io/badge/Arxiv-2412.13649-red?logo=arxiv&label=Arxiv&color=red)](https://arxiv.org/pdf/2412.13649)
+[![License](https://img.shields.io/badge/Code%20License-MIT%20License-yellow)](https://github.com/SUSTechBruce/LOOK-M/blob/main/LICENSE)
+</h5>
+
+
+
+
+## Overview
+
+**SCOPE** is a simple yet effective framework designed to tackle the **KV cache bottleneck** in large language models (LLMs) during long-context generation. While existing methods primarily focus on the **prefill phase**, SCOPE introduces **stage-level KV cache compression**, addressing both **prefill and decoding phases** separately—an essential improvement for long-output reasoning tasks.
+
+> SCOPE is especially useful for LLM applications that require **efficient, scalable generation with long outputs**.
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+    <div style="text-align: center;">
+        <img src="assets/figure1.png" alt="Figure 1: SCOPE Pipeline" width="45%"/>
+        <p><b>Comparison of Three Paradigms</b></p>
+    </div>
+    <div style="text-align: center;">
+        <img src="assets/figure3.png" alt="Figure 3: Stage-Level KV Cache Compression" width="55%"/>
+        <p><b>Overview of Three Decoding Strategies</b></p>
+    </div>
+</div>
+
+## Key Observations
+- *Excessive compression* during the prefill phase
+which requires specific full context, impairs the
+comprehension of the reasoning task.
+
+<div style="text-align: center;">
+    <img src="assets/figure2a.png" width="60%">
+</div>
+
+- *Deviation of heavy hitters* occurs in the reasoning
+tasks with long outputs.
+
+<div style="text-align: center;">
+    <img src="assets/figure2b.png" width="60%">
+</div>
+
+
+## Visualization
+
+Attention heatmaps for layer 13 of a simplified GSM8k+ sample
+in LongGenBench:
+
+<p align="center">
+    <img src="assets/attn_map.png" width="100%"> <br>
+</p>
+
+> We provide a notebook `vis_attn_map.ipynb` to reproduce the visualization result. Model attention maps for different layers would be stored at `./attention_map`
+
+
+## Requirements
+```
+torch==2.4.0
+transformers==4.44.2
+flash_attn==2.5.8
+```
+
+## Environment Setup
+```
+conda create -n SCOPE
+pip install -r requirements.txt
+```
 
 
 ## Inference in GSM8K+(LongGenBench_examples/gsm8k_30.jsonl)
@@ -46,3 +117,32 @@ results_dir=$1
 python3 eval_gen.py \
     --results_dir ${results_dir}
 ```
+
+
+## TODO
+
+- [ ] xxx
+- [ ] xxx
+
+#### The code is still being organized.🚧
+
+
+## Citation
+
+#### If you find our work valuable, we would appreciate your citation: 🎈
+
+```bibtex
+@article{wu2024scope,
+  title={SCOPE: Optimizing Key-Value Cache Compression in Long-context Generation},
+  author={Wu, Jialong and Wang, Zhenglin and Zhang, Linhai and Lai, Yilong and He, Yulan and Zhou, Deyu},
+  journal={arXiv preprint arXiv:2412.13649},
+  year={2024}
+}
+```
+
+## Acknowledgements
+- Thanks to [SnapKV](https://github.com/FasterDecoding/SnapKV) and [PyramidKV (KVCache-Factory](https://github.com/Zefan-Cai/KVCache-Factory) for providing open-source code to support the expansion of this project. 🎁
+
+- Special thanks to [LOOK-M](https://github.com/SUSTechBruce/LOOK-M) for the beautifully designed README template, which we referenced. 🎨
+
+- Shoutout to [@Lueci4er](https://github.com/Lueci4er) on GitHub for valuable suggestions on code details, which we adopted. 🛠️

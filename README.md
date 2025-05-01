@@ -28,7 +28,7 @@
 <table>
   <tr>
     <td align="center">
-      <img src="assets/figure1.png" width="150px"/><br/>
+      <img src="assets/figure1.png" width="200px"/><br/>
       <b>Comparison of Three Paradigms</b>
     </td>
     <td align="center">

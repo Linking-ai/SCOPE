@@ -13,7 +13,7 @@
 
 [![Transformers](https://img.shields.io/badge/%F0%9F%A4%97Transformers-v4.44.2-brightgreen)](https://github.com/huggingface/transformers)
 [![arXiv](https://img.shields.io/badge/Arxiv-2412.13649-red?logo=arxiv&label=Arxiv&color=red)](https://arxiv.org/pdf/2412.13649)
-[![License](https://img.shields.io/badge/Code%20License-MIT%20License-yellow)](https://github.com/SUSTechBruce/LOOK-M/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/Code%20License-MIT%20License-yellow)](https://github.com/Linking-ai/SCOPE/blob/main/LICENSE)
 </h5>
 
 
@@ -44,14 +44,14 @@ which requires specific full context, impairs the
 comprehension of the reasoning task.
 
 <div style="text-align: center;">
-    <img src="assets/figure2a.png" width="60%">
+    <img src="assets/figure2a.png" width="150px">
 </div>
 
 - *Deviation of heavy hitters* occurs in the reasoning
 tasks with long outputs.
 
 <div style="text-align: center;">
-    <img src="assets/figure2b.png" width="60%">
+    <img src="assets/figure2b.png" width="150px">
 </div>
 
 
@@ -126,9 +126,6 @@ python3 eval_gen.py \
 - [ ] xxx
 - [ ] xxx
 
-#### The code is still being organized.🚧
-
-
 ## Citation
 
 #### If you find our work valuable, we would appreciate your citation: 🎈
@@ -148,3 +145,6 @@ python3 eval_gen.py \
 - Special thanks to [LOOK-M](https://github.com/SUSTechBruce/LOOK-M) for the beautifully designed README template, which we referenced. 🎨
 
 - Shoutout to [@Lueci4er](https://github.com/Lueci4er) on GitHub for valuable suggestions on code details, which we adopted. 🛠️
+
+
+#### The code is still being organized.🚧

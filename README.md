@@ -25,16 +25,18 @@
 
 > SCOPE is especially useful for LLM applications that require **efficient, scalable generation with long outputs**.
 
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-    <div style="text-align: center;">
-        <img src="assets/figure1.png" alt="Figure 1: SCOPE Pipeline" width="120px"/>
-        <p><b>Comparison of Three Paradigms</b></p>
-    </div>
-    <div style="text-align: center;">
-        <img src="assets/figure3.png" alt="Figure 3: Stage-Level KV Cache Compression" width="300px"/>
-        <p><b>Overview of Three Decoding Strategies</b></p>
-    </div>
-</div>
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/figure1.png" width="150px"/><br/>
+      <b>Comparison of Three Paradigms</b>
+    </td>
+    <td align="center">
+      <img src="assets/figure3.png" width="450px"/><br/>
+      <b>Overview of Three Decoding Strategies</b>
+    </td>
+  </tr>
+</table>
 
 ## Key Observations
 - *Excessive compression* during the prefill phase

@@ -39,19 +39,19 @@
 </table>
 
 ## Key Observations
-- *Excessive compression* during the prefill phase
+- **Excessive compression** during the prefill phase
 which requires specific full context, impairs the
 comprehension of the reasoning task.
 
 <div style="text-align: center;">
-    <img src="assets/figure2a.png" width="150px">
+    <img src="assets/figure2a.png" width="300px">
 </div>
 
-- *Deviation of heavy hitters* occurs in the reasoning
+- **Deviation of heavy hitters** occurs in the reasoning
 tasks with long outputs.
 
 <div style="text-align: center;">
-    <img src="assets/figure2b.png" width="150px">
+    <img src="assets/figure2b.png" width="300px">
 </div>
 
 

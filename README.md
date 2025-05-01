@@ -27,11 +27,11 @@
 
 <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
     <div style="text-align: center;">
-        <img src="assets/figure1.png" alt="Figure 1: SCOPE Pipeline" width="45%"/>
+        <img src="assets/figure1.png" alt="Figure 1: SCOPE Pipeline" width="120px"/>
         <p><b>Comparison of Three Paradigms</b></p>
     </div>
     <div style="text-align: center;">
-        <img src="assets/figure3.png" alt="Figure 3: Stage-Level KV Cache Compression" width="55%"/>
+        <img src="assets/figure3.png" alt="Figure 3: Stage-Level KV Cache Compression" width="300px"/>
         <p><b>Overview of Three Decoding Strategies</b></p>
     </div>
 </div>

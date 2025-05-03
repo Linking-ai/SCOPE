@@ -60,6 +60,8 @@ tasks with long outputs.
   </tr>
 </table>
 
+> We provide a notebook `vis_topk_index_attn.ipynb` to reproduce the *Deviation of heavy hitters* result(1× A100 (80GB) GPU).
+
 
 ## Visualization
 
@@ -70,7 +72,7 @@ in LongGenBench:
     <img src="assets/attn_map.png" width="100%"> <br>
 </p>
 
-> We provide a notebook `vis_attn_map.ipynb` to reproduce the visualization result. Model attention maps for different layers would be stored at `./attention_map`
+> We provide a notebook `vis_attn_map.ipynb` to reproduce the visualization result(1× A100 (80GB) GPU). Model attention maps for different layers would be stored at `./attention_map`.
 
 
 ## Requirements

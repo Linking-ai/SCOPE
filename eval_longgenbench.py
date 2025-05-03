@@ -94,72 +94,123 @@ def scorer(dataset, predictions, answers):
 
     return round(100 * np.mean(scores), 4)
 
+# if __name__ == '__main__':
+#     args = parse_args()
+    
+#     dataset_list = [
+#         "gsm8k",
+#         "mmlu",
+#         "csqa",
+#         ]
+    
+#     results_list = [
+#         ["dataset"],
+#         ["SnapKV"],
+#         ["StreamingLLM"],
+#         ["H2O"],
+#         ["PyramidKV"],
+#         ["PyramidInfer"],
+#         ["ALLKV"],
+#     ]
+    
+#     for dataset in dataset_list:
+        
+#         results_list[0].append(dataset)
+        
+#         for idx, method in enumerate(["SnapKV", "StreamingLLM", "H2O", "PyramidKV", "PyramidInfer" ,"ALLKV"]):
+#             try:
+#                 args.method = method
+#                 args.dataset = dataset
+#                 args.eval_file = os.path.join(args.results_dir,dataset,f"{method}.json")
+                
+#                 scores = dict()
+
+#                 predictions, answers, lengths = [], [], []
+#                 acc = []
+#                 # dataset = filename.split('.')[0]
+#                 with open(args.eval_file, "r", encoding="utf-8") as f:
+#                     for line in f:
+#                         try:
+#                             data = json.loads(line)
+#                             predictions.append(data["pred"])
+#                             answers.append(data["answers"])
+#                             if "length" in data:
+#                                 lengths.append(data["length"])
+#                         except:
+#                             print("error")
+
+#                 score = scorer(args.dataset, predictions, answers)
+
+#                 avg_length = round(np.mean(lengths), 2)
+#                 print(avg_length)
+
+#                 scores[args.dataset] = score
+
+#                 output_dir = os.path.dirname(args.eval_file)
+                
+#                 results_list[idx+1].append(score)
+                
+#                 with open(os.path.join(output_dir, "metrics.json"), "w") as f:
+#                     json.dump(scores, f, ensure_ascii=False, indent=4)
+            
+#                 print(f"dataset {args.dataset} method {args.method} scores {scores}")
+#             except:
+                
+#                 results_list[idx+1].append(-1)
+                
+#                 print(f"dataset {args.dataset} method {args.method} scores {None}")
+                
+#     import csv
+#     with open(os.path.join(args.results_dir,f"results.csv"), 'w') as fp:
+#         writer = csv.writer(fp)
+#         writer.writerows(results_list)
+
 if __name__ == '__main__':
     args = parse_args()
     
-    dataset_list = [
-        "gsm8k",
-        "mmlu",
-        "csqa",
-        ]
+    dataset_list = ["gsm8k", "mmlu", "csqa"]
+    method_map = {
+        "H2O": ["None", "h2o", "slide", "adaptive", "discontinuous"],
+        "PyramidKV": ["None", "slide", "adaptive", "discontinuous"],
+        "PyramidInfer": ["None", "pyramidinfer"],
+        "StreamingLLM": ["None", "slm"],
+        "SnapKV": ["None", "slide", "adaptive", "discontinuous"],
+        "ALLKV": ["None", "slide", "adaptive", "discontinuous"]
+    }
     
-    results_list = [
-        ["dataset"],
-        ["SnapKV"],
-        ["StreamingLLM"],
-        ["H2O"],
-        ["PyramidKV"],
-        ["ALLKV"],
-    ]
-    
+    results_row = ["prefill+decoding"]
+
     for dataset in dataset_list:
-        
-        results_list[0].append(dataset)
-        
-        for idx, method in enumerate(["SnapKV", "StreamingLLM", "H2O", "PyramidKV", "ALLKV"]):
-            try:
-                args.method = method
-                args.dataset = dataset
-                args.eval_file = os.path.join(args.results_dir,dataset,f"{method}.json")
-                
-                scores = dict()
+        score_found = False
+        for prefill in method_map.keys():
+            for decoding in method_map[prefill]:
+                method = f"{prefill}+{decoding}"
+                if method in args.results_dir:
+                    results_row[0]=method
+                    eval_file = os.path.join(args.results_dir, dataset, f"{prefill}.json")
+                    if os.path.exists(eval_file):
+                        
+                        # 读取文件并计算准确率
+                        predictions, answers = [], []
+                        with open(eval_file, "r", encoding="utf-8") as f:
+                            for line in f:
+                                data = json.loads(line)
+                                predictions.append(data["pred"])
+                                answers.append(data["answers"])
+                        
+                        score = scorer(dataset, predictions, answers)
+                        results_row.append(score)
+                        score_found = True
+                        break  # 找到一个匹配的文件后跳出
+            if score_found:
+                break
+        if not score_found:
+            results_row.append(-1)  # 如果没有找到匹配的文件，填充 -1
 
-                predictions, answers, lengths = [], [], []
-                acc = []
-                # dataset = filename.split('.')[0]
-                with open(args.eval_file, "r", encoding="utf-8") as f:
-                    for line in f:
-                        try:
-                            data = json.loads(line)
-                            predictions.append(data["pred"])
-                            answers.append(data["answers"])
-                            if "length" in data:
-                                lengths.append(data["length"])
-                        except:
-                            print("error")
-
-                score = scorer(args.dataset, predictions, answers)
-
-                avg_length = round(np.mean(lengths), 2)
-                print(avg_length)
-
-                scores[args.dataset] = score
-
-                output_dir = os.path.dirname(args.eval_file)
-                
-                results_list[idx+1].append(score)
-                
-                with open(os.path.join(output_dir, "metrics.json"), "w") as f:
-                    json.dump(scores, f, ensure_ascii=False, indent=4)
-            
-                print(f"dataset {args.dataset} method {args.method} scores {scores}")
-            except:
-                
-                results_list[idx+1].append(-1)
-                
-                print(f"dataset {args.dataset} method {args.method} scores {None}")
-                
+    # 保存结果
     import csv
-    with open(os.path.join(args.results_dir,f"results.csv"), 'w') as fp:
+    output_csv_path = os.path.join(args.results_dir, "results.csv")
+    with open(output_csv_path, "w", newline="") as fp:
         writer = csv.writer(fp)
-        writer.writerows(results_list)
+        writer.writerow(["dataset"] + dataset_list)
+        writer.writerow(results_row)

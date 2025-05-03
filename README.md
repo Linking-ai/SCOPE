@@ -88,6 +88,31 @@ conda create -n SCOPE
 pip install -r requirements.txt
 ```
 
+## LongGenBench
+### Dataset Construction
+Our dataset construction method is based on the original [LongGenBench](https://github.com/Dominic789654/LongGenBench) repository. We provide scripts for building the LongGenBench dataset as follows:
+- **LongGenBench-4K**
+
+  | Dataset  | Script |
+  |----------|--------|
+  | GSM8K+   | `create_gsm8k_30.sh` |
+  | MMLU+    | `create_mmlu_30.sh` |
+  | CSQA+    | `create_csqa_40.sh` |
+
+- **LongGenBench-8K**
+
+  | Dataset  | Script |
+  |----------|--------|
+  | GSM8K++   | `create_gsm8k_60.sh` |
+  | MMLU++    | `create_mmlu_60.sh` |
+  | CSQA++    | `create_csqa_80.sh` |
+
+- **Example Usage**
+  
+  To generate the GSM8K+ dataset, run:
+  ```python
+  bash scripts/scripts_longgenbench/create_gsm8k_30.sh
+  ```
 
 ## Inference in GSM8K+(LongGenBench_examples/gsm8k_30.jsonl)
 

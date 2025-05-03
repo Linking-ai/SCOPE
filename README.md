@@ -114,7 +114,7 @@ Our dataset construction method is based on the original [LongGenBench](https://
   bash scripts/scripts_longgenbench/create_gsm8k_30.sh
   ```
 
-### Inference in GSM8K+(data/longgenbench_examples/gsm8k_30.jsonl)
+### Inference in LongGenBench
 
 ```bash
 export CUDA_VISIBLE_DEVICES=$1
@@ -144,7 +144,7 @@ python3 run_longgenbench.py \
     --max_num_examples ${T} \
 ```
 
-### Eval Acc in GSM8K+
+### Eval Acc
 
 ```bash
 results_dir=$1
@@ -157,8 +157,8 @@ python3 eval_gen.py \
 ## TODO
 
 - [X] fix offset bug
+- [ ] improve README(expand documentation, add examples, and ensure clarity)
 - [ ] reorgnize the code for better using experience
-- [ ] support more models
 
 ## Citation
 

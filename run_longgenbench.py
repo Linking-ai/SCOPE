@@ -321,6 +321,7 @@ if __name__ == "__main__":
         args.dataset = dataset
         if args.dataset == "csqa":
             args.K = int(args.K / 3 * 4) # GSM8K/MMLU has 30,60 questions in a single long input;CSQA has 40,80 questions
-        args.data_file = f"data/LongGenBench_examples/{args.dataset}_{args.K}.jsonl"
-        
+        # args.data_file = f"data/LongGenBench_examples/{args.dataset}_{args.K}.jsonl"
+        args.data_file = f"data/LongGenBench/{args.dataset}/{args.dataset}_{args.K}.jsonl"
+                
         main(args)

@@ -111,6 +111,11 @@ def main(args):
             example["prompt"] = prompt
                 
             test_data.append(example)
+    
+    ##### mmlu 1*A100 80G OOM #####
+    if args.dataset == "mmlu" and args.K == 60:
+        indices_to_remove = [21, 30, 31, 48]
+        test_data = [item for i, item in enumerate(test_data) if i not in indices_to_remove]
 
 
     if args.max_num_examples and len(test_data) > args.max_num_examples:
@@ -154,12 +159,6 @@ def main(args):
             batch_input_ids = tokenized_prompts.input_ids
             attention_mask = tokenized_prompts.attention_mask
 
-        # # default to True
-        # if args.method == "DynamicKV":
-        #     args.output_attentions = True
-        # else:
-        #     args.output_attentions=False
-
         if args.max_capacity_prompts != -1:
             max_capacity_prompts = args.max_capacity_prompts
         elif args.max_capacity_prompts_ratio != -1:
@@ -167,7 +166,7 @@ def main(args):
         
         
         if args.method != "FullKV":
-            if args.method.lower() in ["snapkv","pyramidkv","h2o","allkv"]:
+            if args.method.lower() in ["snapkv","pyramidkv","pyramidinfer","h2o","allkv"]:
                 window_sizes = 8
             elif args.method.lower() in ["streamingllm"]:
                 window_sizes = max_capacity_prompts//2

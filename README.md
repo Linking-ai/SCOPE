@@ -114,17 +114,17 @@ Our dataset construction method is based on the original [LongGenBench](https://
   bash scripts/scripts_longgenbench/create_gsm8k_30.sh
   ```
 
-## Inference in GSM8K+(LongGenBench_examples/gsm8k_30.jsonl)
+### Inference in GSM8K+(data/longgenbench_examples/gsm8k_30.jsonl)
 
 ```bash
 export CUDA_VISIBLE_DEVICES=$1
 
-method=$2 # Support ALLKV, PyramidKV, SnapKV, H2O, StreamingLLM
+method=$2 # Support ALLKV, PyramidKV, PyramidInfer SnapKV, H2O, StreamingLLM
 max_capacity_prompts=$3
 attn_implementation=$4 # Support "flash_attention_2", "sdpa", "eager".
 source_path=$5
 model_path=$6
-decoding_metric=$7 # H2O Support None,h2o,(fixed,linear,jump)---SCOPE
+decoding_metric=$7 # H2O Support None,h2o,(slide, adaptive, discontinuous)---SCOPE
 decoding_window_size=$8
 save_dir=$9 # path to result save_dir
 K=$10 #30,60
@@ -144,7 +144,7 @@ python3 run_longgenbench.py \
     --max_num_examples ${T} \
 ```
 
-## Eval Acc in GSM8K+
+### Eval Acc in GSM8K+
 
 ```bash
 results_dir=$1
@@ -156,8 +156,9 @@ python3 eval_gen.py \
 
 ## TODO
 
-- [ ] xxx
-- [ ] xxx
+- [X] fix offset bug
+- [ ] reorgnize the code for better using experience
+- [ ] support more models
 
 ## Citation
 

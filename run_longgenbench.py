@@ -9,7 +9,7 @@ from tqdm import tqdm
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-datasets = ["gsm8k", "csqa", "mmlu"]
+datasets = ["gsm8k", "mmlu", "csqa"]
 
 dataset2maxlen_8K = {
     "gsm8k": 7950,
@@ -113,7 +113,8 @@ def main(args):
             test_data.append(example)
     
     ##### mmlu 1*A100 80G OOM #####
-    if args.dataset == "mmlu" and args.K == 60:
+    if args.dataset == "mmlu":
+        print("Removing some examples to avoid OOM")
         indices_to_remove = [21, 30, 31, 48]
         test_data = [item for i, item in enumerate(test_data) if i not in indices_to_remove]
 

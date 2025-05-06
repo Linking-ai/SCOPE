@@ -897,7 +897,7 @@ class StreamingLLMKVCluster():
         if self.decoding_metric == 'None':
             return key_states, value_states
         elif self.decoding_metric == 'slm':
-            if k_len < self.max_capacity_prompt + decoding_window_size:
+            if k_len < self.max_capacity_prompt + self.decoding_window_size:
                 return key_states, value_states
             else:
                 decoding_window_size = self.decoding_window_size

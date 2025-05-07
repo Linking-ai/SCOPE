@@ -1232,7 +1232,7 @@ def init_StreamingLLM(self):
         decoding_metric=self.config.decoding_metric
         )
     
-def init_ALLKV(self):
+def init_ALLKV(self, num_hidden_layers):
     if not hasattr(self, "kv_cluster"):
         if not hasattr(self.config, 'decoding_metric'):
             self.config.decoding_metric = 'None'
@@ -1243,6 +1243,8 @@ def init_ALLKV(self):
     
     
     self.kv_cluster = ALLKVCluster(
+        num_hidden_layers = num_hidden_layers,
+        delta=self.config.delta,
         decoding_metric=self.config.decoding_metric,
         decoding_window_size=self.config.decoding_window_size,
         decoding_recent_size=self.config.decoding_recent_size,

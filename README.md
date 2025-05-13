@@ -153,6 +153,14 @@ python3 eval_gen.py \
     --results_dir ${results_dir}
 ```
 
+### Performence in LongGenBench (Llama3.1-8B-Instruct)
+
+<p align="center">
+    <img src="assets/llama_longgenbench_results.png" width="100%"> <br>
+</p>
+
+The run scripts (bash files) for these experiments are located in the `scripts/scripts_longgenbench` folder, and the experimental results can be found in `results_longgenbench_4K` and `results_longgenbench_8K`.
+
 
 ## TODO
 

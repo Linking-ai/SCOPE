@@ -1,0 +1,2 @@
+dataset,gsm8k,mmlu,csqa
+StreamingLLM+slm,10.7752,34.1509,43.5

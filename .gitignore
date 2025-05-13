@@ -2,7 +2,8 @@
 __pycache__/
 
 # 忽略结果文件夹
-results*/
+# results*/
 attention*/
 others/
-scripts/
+# scripts/
+results_longgenbench_gsm8k*/

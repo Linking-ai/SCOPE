@@ -1,0 +1,2 @@
+dataset,gsm8k,mmlu,csqa
+PyramidInfer+pyramidinfer,38.7597,48.9308,71.5833

@@ -175,8 +175,8 @@ The run scripts (bash files) for these experiments are located in the `scripts/s
 ## TODO
 
 - [X] fix offset bug
-- [ ] improve README(expand documentation, add examples, and ensure clarity)
-- [ ] reorgnize the code for better using experience
+- [X] improve README(expand documentation, add examples, and ensure clarity)
+- [X] reorgnize the code for better using experience
 
 ## Citation
 

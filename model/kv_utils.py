@@ -410,7 +410,12 @@ class PyramidInferCluster():
                 attn_weights_sum = attn_weights[:, :, :, : -window_size].sum(dim = -2)
                 attn_cache = attn_weights_sum
                 # decoding cache
-                decoding_indices = attn_cache.topk(max_capacity_prompt + decoding_window_size, dim=-1).indices
+                # decoding_indices = attn_cache.topk(max_capacity_prompt + decoding_window_size, dim=-1).indices
+                # fix out-of-range bug
+                top_k = max_capacity_prompt + decoding_window_size
+                if top_k > attn_cache.size(-1):
+                    top_k = attn_cache.size(-1)
+                decoding_indices = attn_cache.topk(top_k, dim=-1).indices
                 decoding_indices = decoding_indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)
                 indices = decoding_indices
                 k_past_compress = key_states[:, :, :-window_size, :].gather(dim = 2, index = indices)

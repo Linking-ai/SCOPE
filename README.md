@@ -161,6 +161,16 @@ python3 eval_gen.py \
 
 The run scripts (bash files) for these experiments are located in the `scripts/scripts_longgenbench` folder, and the experimental results can be found in `results_longgenbench_4K` and `results_longgenbench_8K`.
 
+### Performence on the GSM8K+ task from LONGGENBENCH-4K (Llama3.1-8B-Instruct)
+
+The plug-in experiment results of LLaMA3.1-8B-instruct on the GSM8K+ task from LONGGENBENCH-4K.
+
+<p align="center">
+    <img src="assets/plug-in_results.png" width="100%"> <br>
+</p>
+
+The run scripts (bash files) for these experiments are located in the `scripts/scripts_longgenbench` folder, and the experimental results can be found in `results_longgenbench_gsm8k_plug_in`.
+
 
 ## TODO
 

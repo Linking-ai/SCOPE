@@ -20,7 +20,7 @@ do
         --attn_implementation ${attn_implementation} \
         --save_dir ${save_dir} \
         --use_cache True \
-        --K ${K}\
+        --K ${K} \
         --decoding_window_size ${decoding_window_size} \
         --decoding_recent_size ${decoding_recent_size} \
         --decoding_metric ${decoding_metric} \

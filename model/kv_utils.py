@@ -1145,7 +1145,7 @@ def init_pyramidinfer(self, num_hidden_layers):
         decoding_metric=self.config.decoding_metric
         )
 
-def init_snapkv(self):
+def init_snapkv(self, num_hidden_layers):
     if not hasattr(self, "kv_cluster"):
         if not hasattr(self.config, 'window_size'):
             self.config.window_size = 32
@@ -1162,7 +1162,8 @@ def init_snapkv(self):
         if not hasattr(self.config, 'decoding_recent_size'):
             self.config.decoding_recent_size = 256
     
-    self.kv_cluster = SnapKVCluster( 
+    self.kv_cluster = SnapKVCluster(
+        num_hidden_layers = num_hidden_layers, 
         decoding_window_size=self.config.decoding_window_size,
         decoding_recent_size=self.config.decoding_recent_size,
         window_size = self.config.window_size, 

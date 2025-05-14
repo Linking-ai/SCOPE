@@ -34,11 +34,26 @@
 # results_dir="results_longgenbench_gsm8k_plug_in/ALLKV+slide_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
 # results_dir="results_longgenbench_gsm8k_plug_in/ALLKV+adaptive_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
 # results_dir="results_longgenbench_gsm8k_plug_in/ALLKV+discontinuous_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
-
 # results_dir="results_longgenbench_gsm8k_plug_in/ALLKV+slide_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
 # results_dir="results_longgenbench_gsm8k_plug_in/ALLKV+adaptive_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
-results_dir="results_longgenbench_gsm8k_plug_in/ALLKV+discontinuous_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/ALLKV+discontinuous_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
 
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+None_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+slide_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+adaptive_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+discontinuous_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+None_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+slide_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+adaptive_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/PyramidKV+discontinuous_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+
+# results_dir="results_longgenbench_gsm8k_plug_in/SnapKV+None_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/SnapKV+slide_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/SnapKV+adaptive_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/SnapKV+discontinuous_decoding_window_512_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/SnapKV+slide_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/SnapKV+adaptive_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
+# results_dir="results_longgenbench_gsm8k_plug_in/SnapKV+discontinuous_decoding_window_1024_recent_window_256/meta-llama-3.1-8b-instruct_2048"
 
 python3 eval_longgenbench.py \
     --results_dir ${results_dir}

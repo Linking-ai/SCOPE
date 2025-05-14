@@ -7,3 +7,5 @@ attention*/
 others/
 # scripts/
 # results_longgenbench_gsm8k*/
+analysis.ipynb
+results_infinitebench/

@@ -166,7 +166,7 @@ The run scripts (bash files) for these experiments are located in the `scripts/s
 The plug-in experiment results of LLaMA3.1-8B-instruct on the GSM8K+ task from LONGGENBENCH-4K.
 
 <p align="center">
-    <img src="assets/plug-in_results.png" width="100%"> <br>
+    <img src="assets/plug-in_results.png" width="350px"> <br>
 </p>
 
 The run scripts (bash files) for these experiments are located in the `scripts/scripts_longgenbench` folder, and the experimental results can be found in `results_longgenbench_gsm8k_plug_in`.

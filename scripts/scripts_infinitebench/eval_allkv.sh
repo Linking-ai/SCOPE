@@ -1,12 +1,12 @@
 export CUDA_VISIBLE_DEVICES=2
 
-method="H2O" # Support PyramidKV, SnapKV, PyramidInfer, H2O, StreamingLLM, ALLKV
+method="ALLKV" # Support PyramidKV, SnapKV, PyramidInfer, H2O, StreamingLLM, ALLKV
 max_capacity_prompts=2048 # 2048 in paper
 decoding_recent_size=256 # 256
 attn_implementation="flash_attention_2" # Support "flash_attention_2", "sdpa", "eager".
 model_path=/data1/wangzhenglin/speculative_decoding/LLM/Meta-Llama-3.1-8B-Instruct
 
-for decoding_metric in "slide" "adaptive" "discontinuous"
+for decoding_metric in "None"
 do
     for decoding_window_size in 512
     do

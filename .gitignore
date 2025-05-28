@@ -2,10 +2,9 @@
 __pycache__/
 
 # 忽略结果文件夹
-# results*/
+results*/
 attention*/
 others/
-# scripts/
-# results_longgenbench_gsm8k*/
+scripts/
 analysis.ipynb
-results_infinitebench/
+assets/
